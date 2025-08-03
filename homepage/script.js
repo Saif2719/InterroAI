@@ -8,6 +8,11 @@ function validateEmail() {
         errorMessage.style.display = 'block';
         return;
     }
+     if (!gmailPattern.test(emailInput)) {
+        errorMessage.textContent = "Please use a valid Gmail.";
+        errorMessage.style.display = "block";
+        return false;
+    }
     
 
     if (gmailPattern.test(emailInput)) {

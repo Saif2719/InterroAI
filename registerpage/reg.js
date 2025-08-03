@@ -1,5 +1,6 @@
 // Combined JS function
 function validateForm() {
+    const fullname = document.getElementById('fullname').value.trim();
     const emailInput = document.getElementById('emailInput').value.trim();
     const password = document.getElementById('password').value.trim();
     const confirmPassword = document.getElementById('confirmPassword').value.trim();
@@ -8,11 +9,17 @@ function validateForm() {
     const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
     // Validate Email
+    if (fullname === "") {
+        errorMessage.textContent = "Please enter your name.";
+        errorMessage.style.display = "block";
+        return false;
+    }
     if (emailInput === "") {
         errorMessage.textContent = "Please enter your Gmail address.";
         errorMessage.style.display = "block";
         return false;
     }
+    
 
     if (!gmailPattern.test(emailInput)) {
         errorMessage.textContent = "Please use a valid Gmail.";
@@ -37,9 +44,9 @@ function validateForm() {
 
     // All validations passed
     errorMessage.style.display = "none";
-    alert("Registration successful!");
+   
     
     
-    window.location.href = "../loginpage/login.html";
-    return true;
+   window.location.href = "../loginpage/login.html";
+   return false;
 }

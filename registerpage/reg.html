@@ -32,21 +32,19 @@
         <div class="highlight"></div>
         <form id="registrationForm" onsubmit="return validateForm()">
     
-    <input type="text" id="fullname" class="input-field" placeholder="Fullname" required>
-    <input type="email" id="emailInput" class="input-field" placeholder="Email">
-    <p id="errorMessage" style="display: none; color: red; display:none;"></p>
-    <div class="error" id="errorMessage"></div>
-
-    <input type="password" id="password" class="input-field" placeholder="Password" required>
-
+            <input type="text" id="fullname" class="input-field" placeholder="Fullname">
     
-    <input type="password" id="confirmPassword" class="input-field" placeholder="confirm Password" required>
-    <p id="errorMessage" style="color: red; display: none;"></p>
-
-
+            <input type="text" id="emailInput" class="input-field" placeholder="Email">
     
 
-        <button class="continue-btn" onclick="validateForm()">Register</button>
+            <input type="password" id="password" class="input-field" placeholder="Password" >
+
+    
+            <input type="password" id="confirmPassword" class="input-field" placeholder="confirm Password" >
+            <p id="errorMessage" style="display: none; color: red; display:none;"></p>
+             <div class="error" id="errorMessage"></div>
+
+             <button type="submit" class="continue-btn" >Register</button>
   </form>
         
         

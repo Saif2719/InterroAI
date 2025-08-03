@@ -32,13 +32,14 @@
         <div class="highlight"></div>
         <div class="highlight">Start your 30 day free trial</div>
         
-         <input type="email" id="emailInput" class="input-field" placeholder="Email" required>
-       
-        <input type="password" id="password" class="input-field" placeholder="Password" required>
-        <p id="errorMessage" style="display: none; color: red; display: none;"></p>
-        
-        <button class="continue-btn" onclick="validateEmail()">Continue</button>
-        
+        <form action="login.php" method="POST" onsubmit="return validateEmail()">
+            <input type="text" id="emailInput" name="email" class="input-field" placeholder="Email" >
+  
+            <input type="password" id="password" name="password" class="input-field" placeholder="Password">
+
+            <p id="errorMessage" style="display: none; color: red;"></p>
+
+            <button type="submit" class="continue-btn">Continue</button>
         
         <div class="or">or sign up with </div>
         
