@@ -30,23 +30,23 @@
         
         
         <div class="highlight"></div>
-        <form action="register.php" method="POST" onsubmit="return validateForm()">
+        <form id="registrationForm" action="register.php" method="POST" >
     
-            <input type="text" id="fullname" class="input-field" placeholder="Fullname">
+            <input type="text" id="fullname" name="fullname" class="input-field" placeholder="Fullname">
     
-            <input type="text" id="emailInput" class="input-field" placeholder="Email">
+            <input type="text" id="emailInput" name="emailInput" class="input-field" placeholder="Email">
     
 
-            <input type="password" id="password" class="input-field" placeholder="Password" >
+            <input type="password" id="password" name="password" class="input-field" placeholder="Password" >
 
     
-            <input type="password" id="confirmPassword" class="input-field" placeholder="confirm Password" >
-            <p id="errorMessage" style="display: none; color: red; display:none;"></p>
-             <div class="error" id="errorMessage"></div>
+            <input type="password" id="confirmPassword" name="confirmpassword" class="input-field" placeholder="confirm Password" >
+            
+             <div class="error" id="errorMessage" style="color: red; display:none;"></div>
 
              <button type="submit" class="Register-btn" >Register</button>
   </form>
-        
+       
         
         
         <div class="or">or sign up with </div>

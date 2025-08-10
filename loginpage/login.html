@@ -24,32 +24,27 @@
             <img src="logimg.png" alt="Login Illustration">
         </div>
 
-    <div class="container">
-        <h1>Create an account!</h1>
-        
-        
-        
-        <div class="highlight"></div>
-        <div class="highlight">Start your 30 day free trial</div>
-        
-        <form action="login.php" method="POST" onsubmit="return validateEmail()">
-            <input type="text" id="emailInput" name="email" class="input-field" placeholder="Email" >
-  
-            <input type="password" id="password" name="password" class="input-field" placeholder="Password">
-
-            <p id="errorMessage" style="display: none; color: red;"></p>
-
-            <button type="submit" class="continue-btn">Continue</button>
-        
-        <div class="or">or sign up with </div>
-        
-        <div class="social-login">
-            <button class="social-btn1">Google</button>
-            <button class="social-btn2">Facebook</button>
-            <button class="social-btn3">Apple</button>
+        <div class="container">
+            <h1>Create an account!</h1>
+            <div class="highlight"></div>
+            <div class="highlight">Start your 30 day free trial</div>
+            
+            <!-- Fixed: Changed id="loginFrom" → id="loginForm" -->
+            <form id="loginForm" action="login.php" method="POST">
+                <input type="text" id="emailInput" name="email" class="input-field" placeholder="Email">
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password">
+                <p id="errorMessage" style="display: none; color: red;"></p>
+                <button type="submit" class="continue-btn">Continue</button>
+            </form>
+            
+            <div class="or">or sign up with </div>
+            <div class="social-login">
+                <button class="social-btn1">Google</button>
+                <button class="social-btn2">Facebook</button>
+                <button class="social-btn3">Apple</button>
+            </div>
+            <div class="signup-link">Do not have an account? <a href="../registerpage/reg.html">Sign up</a></div>
         </div>
-        </div>
-    
     </div>
     <script src="login.js"></script>
 </body>
