@@ -204,8 +204,11 @@ div.slide-in {
 }
 
 .social-btn1, .social-btn2, .social-btn3 {
+     display: flex;
+    align-items: center;
+    gap: 8px;
     border: none;
-    padding: 12px 24px;
+    padding: 12px 12px;
     border-radius: 50px;
     font-size: 16px;
     font-weight: 500;
@@ -246,6 +249,11 @@ div.slide-in {
     width: 100%;
     margin: 15px;
 }
+.social-login i {
+            margin-right: 6px;
+            font-size: 20px;
+        }
+        
 
 /* ==============================
    Responsive Styles

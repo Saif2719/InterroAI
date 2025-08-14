@@ -11,3 +11,18 @@ document.querySelector('#dropdownMenu a').addEventListener('click', function (e)
     // Redirect to logout via PHP
     window.location.href = "main.php?logout=true";
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const tags = document.querySelectorAll('.role-tag,.custom');
+    
+    tags.forEach(tag => {
+        tag.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 5px 15px rgba(79, 70, 229, 0.2)';
+        });
+        
+        tag.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
+    });
+});
