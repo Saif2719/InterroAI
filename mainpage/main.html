@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>letsgo</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
     <nav>
@@ -106,10 +107,41 @@
         </button>
     </div>
 </main>
-
-        
-       
+  </div>
+  <!-- Chatbox (hidden initially) -->
+<div class="chatbox" id="chatbox" style="display:none;">
+<div class="chat-header">
+    <div class="chat-header-top">
+        <h2>Interview Practice</h2>
+        <span id="timer">21:00</span>
     </div>
+    <div class="progress-bar">
+        <div id="progress"></div>
+    </div>
+    
+</div>
+
+
+    <!-- Chat area (blank initially if no questions) -->
+    <div class="chat-content" id="chatContent">
+        <!-- Example question template -->
+        <!-- <div class="bot-message">Q1: What is OOP?</div> -->
+        <!-- <div class="user-message">Your answer here</div> -->
+    </div>
+
+    <!-- Input area -->
+    <div class="chat-input">
+        <input type="text" id="answerInput" placeholder="Type your answer here..." />
+        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <div class="button-group">
+  <button id="closeChat" class="close-btn">Close</button>
+  <button id="submit" class="submit">Submit</button>
+</div>
+</div>
+    
+
+    
     
     <script src="main.js"></script>
 </body>
