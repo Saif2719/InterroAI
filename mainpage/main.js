@@ -14,7 +14,7 @@ document.querySelector('#dropdownMenu a').addEventListener('click', function (e)
 
 // ================= Hover Effect for Tags =================
 document.addEventListener('DOMContentLoaded', function() {
-    const tags = document.querySelectorAll('.role-tag,.custom');
+    const tags = document.querySelectorAll('.role-tag');
     
     tags.forEach(tag => {
         tag.addEventListener('mouseenter', function() {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Role/Topic button click
-    const roleTags = document.querySelectorAll('.role-tag, .custom');
+    const roleTags = document.querySelectorAll('.role-tag');
     roleTags.forEach(tag => {
         tag.addEventListener('click', function() {
             container.style.display = "none";
@@ -129,3 +129,22 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(timerInterval);     // stop timer
     });
 });
+    function updateHeading(btn) {
+      let btnText = btn.textContent.trim().toLowerCase();
+
+      if (btnText === "custom") {
+        document.getElementById("header-title").textContent = "Interview Practice";
+      } else {
+        // Capitalize first letter
+        let finalText = btnText.charAt(0).toUpperCase() + btnText.slice(1);
+        document.getElementById("header-title").textContent =
+          "Interview Practice for " + finalText;
+      }
+    }
+
+
+
+
+    function goToQuiz() {
+    window.location.href = "../quizpage/quiz.html"; // redirects to quiz.html
+}

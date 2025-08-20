@@ -40,31 +40,31 @@
     <main class="content">
     <h2 class="section-title">Job Roles</h2>
     <div class="job-roles">
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-laptop-code"></i>
             Software Engineer
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-chart-line"></i>
             Data Analyst
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-tools"></i>
             QA/Test Engineer
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-users"></i>
             Security Analyst
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-star"></i>
             Frontend/Backend
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-paint-brush"></i>
             UX Designer
         </button>
-         <button class="role-tag">
+         <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-robot"></i>
             AI/ML Engineer
         </button>
@@ -73,38 +73,39 @@
     <div class="divider2"></div>
     <h3 class="section-title">Topicwise</h3>
     <div class="job-roles">
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-code"></i>
             Array/String/Stack/Queue
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-chart-line"></i>
             sorting
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-database"></i>
             SQL
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-users"></i>
             OOPs
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-bug"></i>
             Cyber security
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-book"></i>
             Aptitude
         </button>
-        <button class="role-tag">
+        <button class="role-tag" onclick="updateHeading(this)">
             <i class="fas fa-cloud"></i>
             Cloud computing
         </button>
-        <button class="custom">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-         custom
-        </button>
+        <button class="custom" onclick="goToQuiz()">
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    custom
+</button>
+
     </div>
 </main>
   </div>
@@ -112,7 +113,7 @@
 <div class="chatbox" id="chatbox" style="display:none;">
 <div class="chat-header">
     <div class="chat-header-top">
-        <h2>Interview Practice</h2>
+        <h2 id="header-title"></h2>
         <span id="timer">21:00</span>
     </div>
     <div class="progress-bar">

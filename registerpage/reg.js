@@ -3,11 +3,13 @@ function validateForm() {
     
     const fullname = document.getElementById('fullname').value.trim();
     const emailInput = document.getElementById('emailInput').value.trim();
+    const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
     const password = document.getElementById('password').value.trim();
     const confirmPassword = document.getElementById('confirmPassword').value.trim();
     const errorMessage = document.getElementById('errorMessage');
 
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
 
     // Hide error message initially
     errorMessage.style.display = "none";
@@ -27,7 +29,7 @@ function validateForm() {
     }
     
     // Validate Email pattern
-    if (!emailPattern.test(emailInput)) {
+    if (!gmailPattern.test(emailInput)) {
         errorMessage.textContent = "Please enter a valid email address.";
         errorMessage.style.display = "block";
         return false; // Prevent form submission
