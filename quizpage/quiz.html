@@ -42,7 +42,13 @@
         <h2>All done! 🎉</h2>
         <p>You answered all questions. Review below.</p>
         <ol id="answersList"></ol>
+        <div id="resultsBox" class="hidden">
+    <h3>Evaluation Results ✅</h3>
+    <ol id="resultsList"></ol>
+    <p><strong>Total Score:</strong> <span id="totalScore"></span>/100</p>
+  </div>
          <div class="row">
+          <button id="evaluateBtn" type="button">Check Results</button>
     <button id="restartBtn" type="button" class="ghost">Start Over</button>
     <button id="closeBtn" type="button" class="ghost">Close</button>
   </div>

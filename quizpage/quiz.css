@@ -178,3 +178,74 @@ button.ghost{
   margin-top:18px;
   color:var(--muted);
 }
+/* Evaluation Results Box */
+#resultsBox {
+  background: #1e293b;   /* dark slate background */
+  padding: 24px;
+  border-radius: 16px;
+  margin-top: 24px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  color: #f8fafc; /* light text */
+  font-family: "Segoe UI", sans-serif;
+  transition: 0.3s ease;
+}
+
+#resultsBox:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7); /* glow on hover */
+}
+
+#resultsBox h3 {
+  color: #e2e8f0;
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 8px;
+}
+
+#resultsList {
+  list-style: decimal;
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+
+#resultsList li {
+  margin-bottom: 18px;
+  line-height: 1.6;
+  background: #0f172a; /* card background inside */
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  transition: transform 0.2s;
+}
+
+#resultsList li:hover {
+  transform: translateX(4px);
+  border-color: #6366f1; /* accent glow */
+}
+
+#resultsBox strong {
+  color: #f1f5f9; /* bright white */
+}
+
+#resultsBox em {
+  color: #cbd5e1; /* soft gray */
+  font-style: normal; /* make it clean */
+}
+
+#resultsBox .skipped {
+  color: #ef4444; /* 🔴 red for skipped answers */
+  font-style: italic;
+}
+
+#resultsBox .score {
+  font-weight: bold;
+  color: #38bdf8; /* light blue for scores */
+}
+
+#totalScore {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #22c55e; /* ✅ green for total score */
+  margin-top: 6px;
+}

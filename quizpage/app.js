@@ -128,3 +128,55 @@ restartBtn?.addEventListener('click', () => {
 document.getElementById("closeBtn").addEventListener("click", function () {
   window.location.href = "../mainpage/main.html"; // redirect to main page
 });
+const evaluateBtn = document.getElementById('evaluateBtn');
+const resultsBox = document.getElementById('resultsBox');
+const resultsList = document.getElementById('resultsList');
+const totalScoreEl = document.getElementById('totalScore');
+
+let currentTopic = "";  // ⚡ store topic globally
+
+async function evaluateAnswers() {
+  try {
+    evaluateBtn.disabled = true;
+    evaluateBtn.textContent = "Evaluating…";
+
+    const res = await fetch('evaluate_answers.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic: currentTopic, qa: answers })
+    });
+    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || 'Failed to evaluate.');
+
+    // Populate evaluation results
+    resultsList.innerHTML = '';
+    data.results.forEach(r => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>Q${r.id}:</strong> ${r.question}<br>
+                      <em>Your answer:</em> ${r.answer || '<span style="color:#94a3b8">[skipped]</span>'}<br>
+                      <em>Score:</em> ${r.score}/10<br>
+                      <em>Feedback:</em> ${r.feedback}`;
+      resultsList.appendChild(li);
+    });
+    totalScoreEl.textContent = data.total || 0;
+    resultsBox.classList.remove('hidden');
+
+  } catch (err) {
+    console.error(err);
+    alert("Evaluation failed: " + err.message);
+  } finally {
+    evaluateBtn.disabled = false;
+    evaluateBtn.textContent = "Check Results";
+  }
+}
+
+topicForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const topic = topicInput.value.trim();
+  if (!topic) return;
+  currentTopic = topic;   // ⚡ save topic for evaluation step
+  generateQuestions(topic);
+});
+
+evaluateBtn.addEventListener('click', evaluateAnswers); // ⚡ hook
