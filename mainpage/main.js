@@ -27,25 +27,29 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.boxShadow = 'none';
         });
     });
-});
 
-
-
-    // Role/Topic button click
-    const roleTags = document.querySelectorAll('.role-tag');
+    // ================= Role/Topic button click =================
+    const roleTags = document.querySelectorAll('.role-tag'); // exclude custom
     roleTags.forEach(tag => {
         tag.addEventListener('click', function() {
-            container.style.display = "none";
-            chatbox.style.display = "flex";
+            // Get the button text (trim spaces/newlines)
+            let role = this.innerText.trim();
+
+            // Encode for safe URL
+            role = encodeURIComponent(role);
+
+            // Redirect to quiz1.html with role as query parameter
+            window.location.href = `../quiz2page/quiz1.html?role=${role}`;
         });
     });
+});
 
-    
-    
+// ================= Custom Quiz Button =================
 function goToQuiz() {
     window.location.href = "../quizpage/quiz.html"; // redirects to quiz.html
 }
-// Force reload on back/forward safely
+
+// ================= Force reload on back/forward safely =================
 (function() {
     try {
         if (window.history && window.history.replaceState) {

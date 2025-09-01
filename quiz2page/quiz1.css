@@ -175,3 +175,12 @@ button.ghost{
   margin-top:18px;
   color:var(--muted);
 }
+
+/* Add this at the end of your CSS */
+.results-box {
+  margin-top: 20px;
+  /* optional: add background or border if you want it distinct */
+  /* background: var(--panel); */
+  /* padding: 16px; */
+  border-radius: var(--radius);
+}

@@ -10,15 +10,13 @@
 <body>
   <main class="container">
     <section class="card">
-      <h1>Boost your skill </h1>
+      <h1>Boost your skill</h1>
       <span id="timer"><i class="fas fa-clock"></i>20:00</span>
-      
       <p class="muted">I’ll generate 10 questions. You’ll answer them one by one.</p>
-
       
-
       <div id="status" class="status" aria-live="polite"></div>
 
+      <!-- Quiz Section -->
       <div id="quizBox" class="quiz hidden">
         <div class="progress-wrap">
           <div id="progressBar" class="progress"></div>
@@ -38,18 +36,32 @@
         </div>
       </div>
 
+      <!-- Summary Section -->
       <div id="summaryBox" class="summary hidden">
         <h2>All done! 🎉</h2>
         <p>You answered all questions. Review below.</p>
         <ol id="answersList"></ol>
-         <div class="row">
-    <button id="restartBtn" type="button" class="ghost">Start Over</button>
-    <button id="closeBtn" type="button" class="ghost">Close</button>
-  </div>
-        
+        <div class="row">
+          <button id="evaluateBtn" type="button">Check Results</button>
+          <button id="restartBtn" type="button" class="ghost">Start Over</button>
+          <button id="closeBtn" type="button" class="ghost">Close</button>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="resultsBox" class="results-box hidden">
+        <h3>Evaluation Results ✅</h3>
+        <ol id="resultsList"></ol>
+        <p><strong>Total Score:</strong> <span id="totalScore"></span>/100</p>
+        <div class="row">
+          <button id="restartBtn2" type="button" class="ghost">Restart Quiz</button>
+          <button id="closeBtn2" type="button" class="ghost">Close</button>
+        </div>
+      </div>
+
     </section>
     <footer class="foot">
-      <small>Designed & Implemented by Saif • </small>
+      <small>Created and maintained by Saif • </small>
     </footer>
   </main>
 
