@@ -1,29 +1,35 @@
 <?php
 /**
- * generate_questions.php
+ * generate1_questions.php
  *
- * POST JSON: { "topic": "Cloud Computing" }
- * RETURNS: { "success": true, "questions": [ { "id": 1, "question": "..." }, ... ] }
+ * Supports:
+ *   - GET:  generate1_questions.php?role=Java
+ *   - POST: { "topic": "Cloud Computing" }
  *
- * Requires PHP cURL extension.
+ * Returns JSON: { "success": true, "questions": [ { "id": 1, "question": "..." }, ... ] }
  */
 
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
   http_response_code(204);
   exit;
 }
 
-$input = json_decode(file_get_contents('php://input'), true);
-$topic = isset($input['topic']) ? trim($input['topic']) : '';
+// --- Read topic/role ---
+$role = isset($_GET['role']) ? trim($_GET['role']) : null;
 
-if ($topic === '') {
+if (!$role) {
+  $input = json_decode(file_get_contents('php://input'), true);
+  $role = isset($input['topic']) ? trim($input['topic']) : '';
+}
+
+if ($role === '') {
   http_response_code(400);
-  echo json_encode([ 'success' => false, 'error' => 'Missing "topic".' ]);
+  echo json_encode([ 'success' => false, 'error' => 'Missing role/topic.' ]);
   exit;
 }
 
@@ -33,14 +39,14 @@ if ($topic === '') {
 
 $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' . urlencode($API_KEY);
 
-// Prompt: ask for STRICT JSON array of 10 objects
+// Prompt
 $prompt = <<<TXT
 You are generating interview-style questions.
 
 TASK:
-- Create exactly 10 concise, clear, single-sentence questions on the topic: "$topic" .
-- Questions should be moderate level difficult  and very much to the point.
-- Keep simple  and angles (simple definitions, MCQ's,exclude case based and personal thoughts  , true/false,error spotting).
+- Create exactly 10 concise, clear, single-sentence questions for the role/topic: "$role".
+- Questions should be moderate level difficulty and to the point.
+- Keep simple angles (simple definitions, MCQs, true/false, error spotting).
 - Do NOT include answers.
 - IMPORTANT: Respond with STRICT JSON ONLY, no markdown, no explanations.
 
@@ -89,7 +95,7 @@ if ($httpCode < 200 || $httpCode >= 300) {
 
 $data = json_decode($response, true);
 
-// Gemini returns candidates[].content.parts[].text with our JSON
+// Extract Gemini text
 $jsonText = null;
 if (isset($data['candidates'][0]['content']['parts'][0]['text'])) {
   $jsonText = $data['candidates'][0]['content']['parts'][0]['text'];
@@ -102,8 +108,8 @@ if (!$jsonText) {
   exit;
 }
 
+// Parse JSON
 $questions = json_decode($jsonText, true);
-
 if (!is_array($questions)) {
   $jsonText = preg_replace('/^```json|```$/m', '', $jsonText);
   $jsonText = trim($jsonText);
@@ -115,6 +121,7 @@ if (!is_array($questions)) {
   exit;
 }
 
+// Clean & enforce 10 questions
 $clean = [];
 $id = 1;
 foreach ($questions as $q) {
@@ -130,7 +137,7 @@ foreach ($questions as $q) {
 
 while (count($clean) < 10) {
   $n = count($clean) + 1;
-  $clean[] = ['id' => $n, 'question' => "Provide a brief point about $topic (question $n)."];
+  $clean[] = ['id' => $n, 'question' => "Provide a brief point about $role (question $n)."];
 }
 
 echo json_encode([
