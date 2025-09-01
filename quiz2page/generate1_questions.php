@@ -35,6 +35,7 @@ if ($role === '') {
 
 /* ============================== */
 /* >>> YOUR API KEY IS HERE <<< */
+$API_KEY = '' ;  // <-- put your Gemini API key here
 /* ============================== */
 
 $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' . urlencode($API_KEY);

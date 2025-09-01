@@ -26,6 +26,7 @@ if ($topic === '' || !is_array($qa) || count($qa) === 0) {
   exit;
 }
 
+$API_KEY = '';
 $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' . urlencode($API_KEY);
 
 // Build prompt
